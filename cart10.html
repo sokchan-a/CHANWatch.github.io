@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - Watch Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <p>Empower Your Lifestyle.</p>
+  </div>
+
+  <header class="main-header">
+    <div class="logo">CHAN <span>Store</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <h1>Your Shopping Cart</h1>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="images/watch10.jpg" alt="Classic Watch" class="cart-image"></td>
+          <td>GMT Master II</td>
+          <td><input id="qty" type="number" value="1" min="1" class="qty-input"></td>
+          <td id="price">$14,450</td>
+          <td id="subtotal">$14,450</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p><strong>Total:</strong> <span id="total">$14,450</span></p>
+            <a href="checkout.html">
+      <button class="checkout-btn">Proceed to Checkout</button>
+      </a>
+    </div>
+  </main>
+
+  <!-- ✅ JavaScript to auto calculate -->
+  <script>
+    const qtyInput = document.getElementById("qty");
+    const priceText = document.getElementById("price");
+    const subtotalText = document.getElementById("subtotal");
+    const totalText = document.getElementById("total");
+
+    function updateCart() {
+      let qty = parseInt(qtyInput.value);
+      let price = parseFloat(priceText.innerText.replace("$", ""));
+      let subtotal = qty * price;
+      subtotalText.innerText = `$${subtotal.toFixed(2)}`;
+      totalText.innerText = `$${subtotal.toFixed(2)}`;
+    }
+
+    qtyInput.addEventListener("input", updateCart);
+  </script>
+
+</body>
+</html>
